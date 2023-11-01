@@ -1,5 +1,5 @@
 import requests, concurrent.futures, os, urllib3
-
+from datetime import date, time, datetime
 
 urllib3.disable_warnings()
 
@@ -26,6 +26,9 @@ def sort_file():
     with open(r"statuscodes_u.txt", 'r') as file:
         urls = file.read().splitlines()
     sorted_urls = sorted(urls)
+
+    with open(r"statuscodes.txt", 'a') as outFile: #adding date to the top of the file.
+        outFile.write(f"{datetime.today()}\n\n")
     for url in sorted_urls:
         with open(r"statuscodes.txt", 'a') as outFile:
             outFile.write(f"{url}\n")
