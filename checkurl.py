@@ -19,8 +19,8 @@ def url_checker(url):
             response = requests.get('http://' + url, allow_redirects=True, timeout=10)
         except requests.exceptions.RequestException:
              return
-    with open(r"statuscodes_u.txt", 'a') as outFile:
-        outFile.write(f"{str(response.status_code)};{url}\n")
+    response_code = f"{str(response.status_code)};{url}"
+    return response_code
 
 def sort_file():
     with open(r"statuscodes_u.txt", 'r') as file:
@@ -36,10 +36,17 @@ def sort_file():
         os.remove("statuscodes_u.txt")
 
 def main():
+    sites_array = []
     # using multiple threads to look through the list of domains. 
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as exeutor:
-         exeutor.map(url_checker, urls)
-    sort_file()
+        for tmp in exeutor.map(url_checker, urls):
+            if tmp is not None:
+                sites_array.append(tmp)
+    
+    sorted_array = sorted(sites_array)
+    for url in sorted_array:
+        with open(r"statuscodes.txt", 'a') as outFile:
+            outFile.write(f"{url}\n")
 
     
 
