@@ -3,9 +3,9 @@ Tool to automate verification of websites that are up or what code they are serv
 
 To run this program you will need to set up a couple of items:
 
-    - Have theHarvester installed using docker. https://github.com/laramies/theHarvester
-    - have a source file
-    - have a file for the domains to check
+- Have theHarvester installed using docker. https://github.com/laramies/theHarvester
+- have a source file
+- have a file for the domains to check
 
 TODO:
 - [ ] Automatic upload of results to a private git repo.
