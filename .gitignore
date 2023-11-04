@@ -162,7 +162,10 @@ cython_debug/
 
 sources.txt
 domains.txt
+sources copy.txt
+domains copy.txt
 complete_list.txt
 statuscodes.txt
 statuscodes_u.txt
 subdomains.ps1
+/screenshots

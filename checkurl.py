@@ -1,5 +1,6 @@
 import requests, concurrent.futures, os, urllib3
 from datetime import date, time, datetime
+import screenshot_sites
 
 urllib3.disable_warnings()
 
@@ -12,14 +13,17 @@ with open(r"complete_list.txt", 'r') as file:
 # url_checker checks the respons from sites in the complete_list and writes the status code it receives back from the server to a file.
 def url_checker(url):
     print(f"checking URL: {url}")
+    protcol = ""
     try: 
-        response = requests.get('https://' + url, allow_redirects=True, timeout=5, verify=False)
+        protcol = "https://"
+        response = requests.get(protcol + url, allow_redirects=True, timeout=5, verify=False)
     except requests.exceptions.RequestException:
         try: 
-            response = requests.get('http://' + url, allow_redirects=True, timeout=10)
+            protcol = "http://"
+            response = requests.get(protcol + url, allow_redirects=True, timeout=10)
         except requests.exceptions.RequestException:
              return
-    response_code = f"{str(response.status_code)};{url}"
+    response_code = f"{str(response.status_code)};{protcol}{url}"
     return response_code
 
 def sort_file():
@@ -47,6 +51,12 @@ def main():
     for url in sorted_array:
         with open(r"statuscodes.txt", 'a') as outFile:
             outFile.write(f"{url}\n")
+    for line in sorted_array:
+        url = line.split(";")
+        if url[0] == "200":
+            screenshot_sites.screenshot(url[1])
+
+
 
     
 
