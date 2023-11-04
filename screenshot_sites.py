@@ -13,7 +13,18 @@ def screenshot(url):
     driver.quit()
 
 
-#def __main__():
-#    screenshot(f"https://adressesok.posten.no")
+def main():
+    with open(r"statuscodes copy.txt", 'r') as file:
+        lines = file.read().splitlines()
+    
+    for line in lines:
+        url = line.split(";")
+        if url[0] == "200":
+            print(url[1])
+            try:
+                screenshot(url[1])
+            except:
+                continue
 
-#__main__()
+if __name__ == "__main__":
+    main()

@@ -166,6 +166,7 @@ sources copy.txt
 domains copy.txt
 complete_list.txt
 statuscodes.txt
+statuscodes copy.txt
 statuscodes_u.txt
 subdomains.ps1
 /screenshots

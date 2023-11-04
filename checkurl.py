@@ -54,7 +54,10 @@ def main():
     for line in sorted_array:
         url = line.split(";")
         if url[0] == "200":
-            screenshot_sites.screenshot(url[1])
+            try:
+                screenshot_sites.screenshot(url[1])
+            except:
+                continue
 
 
 
