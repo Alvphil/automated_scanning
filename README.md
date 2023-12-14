@@ -7,7 +7,7 @@ To run this program you will need to set up a couple of items:
 - have a source file
 - have a file for the domains to check
 
-TODO:
+## TODO:
 - [ ] Automatic upload of results to a private git repo.
 - [x] take pictures of the sites that resolves.
 
