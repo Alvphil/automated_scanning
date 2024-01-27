@@ -1,6 +1,7 @@
 import requests, concurrent.futures, os, urllib3
 from datetime import date, time, datetime
 import screenshot_sites
+import re
 
 urllib3.disable_warnings()
 
@@ -12,6 +13,13 @@ with open(r"complete_list.txt", 'r') as file:
 
 # url_checker checks the respons from sites in the complete_list and writes the status code it receives back from the server to a file.
 def url_checker(url):
+    domain_regex = r'^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+
+    # Check if the URL matches the regex pattern
+    if not re.match(domain_regex, url):
+        print(f"Invalid URL format: {url}")
+        return None
+    
     print(f"checking URL: {url}")
     protcol = ""
     try: 
