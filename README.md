@@ -1,4 +1,4 @@
-# automated_scanning
+# Automated_scanning
 Tool to automate verification of websites that are up or what code they are serving
 
 To run this program you will need to set up a couple of items:
@@ -16,3 +16,10 @@ What I this tool is supposed to do is to, use the tool theHarvester on a regular
 
 The sites where a server gives a respons get logged, and in a document and pushed up to git for manual? review of new sites.
 
+
+
+## 🤝 Contributing
+Follow the steps to run the program, and try it out.
+
+### Submit a pull request
+If you'd like to contribute, please fork the repository and open a pull request to the `main` branch.
